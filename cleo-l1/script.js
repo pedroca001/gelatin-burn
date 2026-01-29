@@ -20,34 +20,54 @@ document.addEventListener('DOMContentLoaded', function () {
     setInterval(updateViewerCount, 7000);
 
 
-    // --- UTM Parameter Forwarding ---
-    // This script captures UTM parameters from the current URL and appends them to all links on the page.
-    function forwardUTMs() {
-        const urlParams = new URLSearchParams(window.location.search);
-        const links = document.querySelectorAll('a');
+    // --- UTM & Password Persistence Engine (Robust) ---
+    // Monitora a página para injetar parâmetros em botões dinâmicos (VSL Pitch)
+    function applyParamsToButtons() {
+        const currentParams = new URLSearchParams(window.location.search);
+        if (currentParams.toString() === "") return;
 
-        if (Array.from(urlParams).length === 0) return; // No params to forward
+        // Procura por todos os links válidos
+        // Excluindo âncoras puras (#) e javascript:
+        const links = document.querySelectorAll('a:not([href^="#"]):not([href^="javascript:"])');
 
         links.forEach(link => {
             try {
-                let href = link.getAttribute('href');
-                if (!href || href.startsWith('#') || href.startsWith('javascript:')) return;
+                // Pega o href absoluto
+                const href = link.href;
+                if (!href) return;
 
-                const url = new URL(href, window.location.origin); // Handle relative URLs
+                let buttonUrl = new URL(href);
 
-                // Append current params to the link's params
-                for (const [key, value] of urlParams.entries()) {
-                    url.searchParams.set(key, value);
-                }
+                // Itera sobre as UTMs e a senha da URL atual e as repassa para o botão
+                currentParams.forEach((value, key) => {
+                    buttonUrl.searchParams.set(key, value);
+                });
 
-                link.setAttribute('href', url.toString());
+                // Atualiza o link do botão com os parâmetros preservados
+                link.href = buttonUrl.toString();
             } catch (e) {
-                console.error("Error processing link:", link, e);
+                // Ignora erros de parse de URL
+                // console.warn("Erro ao processar link dinâmico.");
             }
         });
     }
 
-    forwardUTMs();
+    // --- LOGICA DE MONITORAMENTO (Para botões que aparecem no pitch) ---
+    // 1. Tenta aplicar imediatamente
+    applyParamsToButtons();
+
+    // 2. Observa a página para detectar quando o botão do pitch é injetado
+    const observer = new MutationObserver((mutations) => {
+        applyParamsToButtons();
+    });
+
+    observer.observe(document.body, {
+        childList: true,
+        subtree: true
+    });
+
+    // 3. Backup: Executa a cada 2 segundos para garantir que nenhum botão escape
+    setInterval(applyParamsToButtons, 2000);
 
 
     // --- Content Protection ---
