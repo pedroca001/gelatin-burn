@@ -1,5 +1,14 @@
 document.addEventListener('DOMContentLoaded', function () {
 
+    // --- Dynamic Date Display ---
+    const dateElement = document.getElementById('current-date');
+    if (dateElement) {
+        const now = new Date();
+        const options = { day: '2-digit', month: '2-digit', year: 'numeric' };
+        const formattedDate = now.toLocaleDateString('pt-BR', options);
+        dateElement.textContent = formattedDate;
+    }
+
     // --- Viewer Counter Logic ---
     const viewerCountElement = document.getElementById('viewer-count-display');
 
@@ -7,9 +16,8 @@ document.addEventListener('DOMContentLoaded', function () {
         if (!viewerCountElement) return;
 
         // Get min/max from data attributes if available, else default
-        // Get min/max from data attributes if available, else default
         let min = parseInt(viewerCountElement.getAttribute('data-min')) || 400;
-        let max = parseInt(viewerCountElement.getAttribute('data-max')) || 800; // Updated to 800
+        let max = parseInt(viewerCountElement.getAttribute('data-max')) || 800;
 
         const randomCount = Math.floor(Math.random() * (max - min + 1)) + min;
         viewerCountElement.textContent = randomCount;

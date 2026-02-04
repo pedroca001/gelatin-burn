@@ -1,0 +1,379 @@
+/* Variáveis */
+:root {
+    --red-header: #a91818;
+    --text-color: #333;
+    --bg-color: #fff;
+    --comment-bg: #f2f3f5;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Header */
+.vsl-news-header {
+    background-color: var(--red-header);
+    color: #fff;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.vsl-news-header h1 {
+    font-size: 28px;
+    font-weight: 700;
+    margin: 0;
+    letter-spacing: 8px;
+    font-family: Arial, sans-serif;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+/* Menu Hamburguer */
+.menu-toggle {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    width: 24px;
+    position: absolute;
+    right: 20px;
+}
+
+.menu-toggle span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: #fff;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+.menu-toggle:hover span {
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+/* Marquee - Dark Red Background */
+marquee {
+    background-color: #8b0000;
+    padding: 8px 0;
+    font-size: 11px;
+    color: #fff;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+/* VSL Section */
+#vsl-section {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px 15px;
+}
+
+#vsl-container {
+    background: #fff;
+}
+
+/* Author Info */
+#vsl-news-author {
+    font-size: 13px;
+    color: #666;
+    margin-bottom: 15px;
+    line-height: 1.4;
+}
+
+#vsl-news-author b {
+    color: #000;
+    font-weight: 600;
+}
+
+/* Video Title */
+.video-title {
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1.3;
+    margin-bottom: 10px;
+    color: #000;
+}
+
+.video-title span {
+    color: #cf0714;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.fst-italic {
+    font-style: italic;
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+/* Video Container */
+.video_vturb {
+    margin: 20px 0;
+    background: #000;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+/* Trust Logos */
+#vsl-news-logos {
+    display: block;
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto;
+    height: auto;
+}
+
+/* Comments Section */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.comments-container {
+    background: #fff;
+    border-top: 1px solid #e0e0e0;
+    padding-top: 20px;
+}
+
+.comment {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 15px;
+    position: relative;
+}
+
+.comment.answer {
+    margin-left: 50px;
+    padding-left: 15px;
+    border-left: 2px solid #e0e0e0;
+}
+
+.user-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.comment-data {
+    flex: 1;
+}
+
+.user {
+    background-color: var(--comment-bg);
+    padding: 10px 15px;
+    border-radius: 18px;
+    margin-bottom: 5px;
+}
+
+.user .name {
+    font-weight: 700;
+    font-size: 13px;
+    color: #365899;
+    margin-bottom: 3px;
+}
+
+.user .text {
+    font-size: 14px;
+    color: #1c1e21;
+    line-height: 1.4;
+}
+
+.buttons {
+    font-size: 12px;
+    color: #65676b;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-left: 10px;
+}
+
+.buttons like,
+.buttons answer,
+.buttons time {
+    cursor: pointer;
+}
+
+.buttons like:hover,
+.buttons answer:hover {
+    text-decoration: underline;
+}
+
+likes {
+    position: absolute;
+    right: 0;
+    top: 0;
+    background: #f0f2f5;
+    padding: 3px 8px;
+    border-radius: 12px;
+    font-size: 11px;
+    color: #65676b;
+    font-weight: 600;
+}
+
+.comments-closed {
+    text-align: center;
+    color: #65676b;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 20px 0;
+    border-top: 1px solid #e0e0e0;
+    margin-top: 20px;
+}
+
+/* Utility Classes */
+.mb-2 {
+    margin-bottom: 0.5rem;
+}
+
+.mb-4 {
+    margin-bottom: 1.5rem;
+}
+
+.fw-bold {
+    font-weight: 700;
+}
+
+.fs-3 {
+    font-size: 1.75rem;
+}
+
+/* Responsive - Mobile First */
+@media (max-width: 768px) {
+    .vsl-news-header {
+        padding: 12px 15px;
+    }
+
+    .vsl-news-header h1 {
+        font-size: 24px;
+        letter-spacing: 6px;
+    }
+
+    .menu-toggle {
+        width: 22px;
+        right: 15px;
+    }
+
+    .menu-toggle span {
+        height: 2.5px;
+        gap: 4px;
+    }
+
+    .video-title {
+        font-size: 22px;
+    }
+
+    .fst-italic {
+        font-size: 14px;
+    }
+
+    .comment.answer {
+        margin-left: 30px;
+        padding-left: 10px;
+    }
+
+    #vsl-news-logos {
+        max-width: 100%;
+    }
+
+    marquee {
+        font-size: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .vsl-news-header {
+        padding: 10px 12px;
+    }
+
+    .vsl-news-header h1 {
+        font-size: 20px;
+        letter-spacing: 4px;
+    }
+
+    .menu-toggle {
+        width: 20px;
+        right: 12px;
+    }
+
+    .menu-toggle span {
+        height: 2px;
+        gap: 3.5px;
+    }
+
+    marquee {
+        font-size: 9px;
+        padding: 6px 0;
+    }
+
+    #vsl-section {
+        padding: 15px 10px;
+    }
+
+    .video-title {
+        font-size: 20px;
+    }
+
+    .comment.answer {
+        margin-left: 20px;
+    }
+
+    .user-avatar {
+        width: 32px;
+        height: 32px;
+    }
+
+    #vsl-news-author {
+        font-size: 12px;
+    }
+
+    .buttons {
+        font-size: 11px;
+    }
+}
+
+/* Extra Small Phones */
+@media (max-width: 360px) {
+    .vsl-news-header h1 {
+        font-size: 18px;
+        letter-spacing: 3px;
+    }
+
+    .menu-toggle {
+        width: 18px;
+        right: 10px;
+    }
+
+    .video-title {
+        font-size: 18px;
+    }
+
+    .fst-italic {
+        font-size: 13px;
+    }
+
+    marquee {
+        font-size: 8px;
+    }
+}
