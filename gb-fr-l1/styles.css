@@ -197,6 +197,12 @@ button {
     min-width: 0;
 }
 
+.page-footer {
+    width: min(100%, 1680px);
+    margin: 0 auto;
+    padding: 0 24px 28px;
+}
+
 .video-shell {
     overflow: hidden;
     width: 100%;
@@ -623,6 +629,10 @@ button {
 
     .recommendations {
         display: none;
+    }
+
+    .page-footer {
+        padding: 0 0 24px;
     }
 }
 
