@@ -178,6 +178,12 @@ button {
     font-weight: 700;
 }
 
+.cast-btn svg {
+    width: 24px;
+    height: 24px;
+    fill: var(--text);
+}
+
 .watch-layout {
     display: grid;
     grid-template-columns: minmax(0, 1fr) 390px;
